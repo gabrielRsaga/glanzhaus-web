@@ -112,7 +112,7 @@ export class MietgeraeteComponent {
   readonly equipment: EquipmentItem[] = [
     {
       icon: 'pi pi-bolt',
-      image: '/assets/images/benzin_hochdruckreiniger.png',
+      image: 'assets/images/benzin_hochdruckreiniger.png',
       name: 'Benzin Hochdruckreiniger',
       subtitle: 'Kränzle Profi-Jet B13/150',
       description:
@@ -131,7 +131,7 @@ export class MietgeraeteComponent {
     },
     {
       icon: 'pi pi-sparkles',
-      image: '/assets/images/benzin_kehrmaschine.png',
+      image: 'assets/images/benzin_kehrmaschine.png',
       name: 'Benzin Kehrmaschine',
       subtitle: '',
       description:
@@ -146,7 +146,7 @@ export class MietgeraeteComponent {
     },
     {
       icon: 'pi pi-sun',
-      image: '/assets/images/benzin_rasenmaeher.png',
+      image: 'assets/images/benzin_rasenmaeher.png',
       name: 'Benzin Rasenmäher',
       subtitle: '',
       description:
@@ -161,7 +161,7 @@ export class MietgeraeteComponent {
     },
     {
       icon: 'pi pi-wrench',
-      image: '/assets/images/bodenfraese_stema_mc2300.png',
+      image: 'assets/images/bodenfraese_stema_mc2300.png',
       name: 'Bodenfräse',
       subtitle: 'Stema MC2300',
       description:
@@ -176,7 +176,7 @@ export class MietgeraeteComponent {
     },
     {
       icon: 'pi pi-minus-circle',
-      image: '/assets/images/benzin_freischneider_43ccm.png',
+      image: 'assets/images/benzin_freischneider_43ccm.png',
       name: 'Benzin Freischneider 43ccm',
       subtitle: '',
       description:

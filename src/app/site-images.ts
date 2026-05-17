@@ -1,6 +1,7 @@
 import { SITE_IMAGE_FILES } from './site-image-files';
 
-const BASE = '/assets/images';
+/** Sem barra inicial: respeita <base href> (localhost e GitHub Pages /glanzhaus-web/). */
+const BASE = 'assets/images';
 
 export const SITE_IMAGES = {
   brandLogo: `${BASE}/${SITE_IMAGE_FILES.brandLogo}`,
