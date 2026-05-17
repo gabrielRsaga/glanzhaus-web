@@ -1,0 +1,338 @@
+@import 'primeicons/primeicons.css';
+
+/*
+ * Cores alinhadas ao site original glanzhaus.ch:
+ * azul aço / slate (#4A769B), variações #457291 / #3B5E7A,
+ * branco para texto e CTAs sólidas (fundo branco + texto azul escuro).
+ */
+:root {
+  --p-primary-50: #f2f6f9;
+  --p-primary-100: #e1e9f0;
+  --p-primary-200: #c3d4e2;
+  --p-primary-300: #9bb5cc;
+  --p-primary-400: #6d90b0;
+  --p-primary-500: #4a769b;
+  --p-primary-600: #3f6789;
+  --p-primary-700: #365673;
+  --p-primary-800: #314961;
+  --p-primary-900: #2c3f54;
+  --p-primary-950: #1e2a38;
+
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f4f7fa;
+  --p-surface-100: #e8eef4;
+  --p-surface-200: #d7e0eb;
+  --p-surface-300: #bcc9d9;
+  --p-surface-400: #94a5bb;
+  --p-surface-500: #6f849d;
+  --p-surface-600: #5a6e82;
+  --p-surface-700: #4a5a6b;
+  --p-surface-800: #3f4d5c;
+  --p-surface-900: #2c3f54;
+  --p-surface-950: #1e2a38;
+
+  /* Do layout original: destaques em hero */
+  --gh-blue-deep: #3b5e7a;
+  --gh-blue-panel: #457291;
+  --gh-hero-wash: linear-gradient(118deg, #3b5e7a 0%, #4a769b 42%, #5d88ab 100%);
+  --gh-on-dark-muted: #d4e4f0;
+  --gh-on-dark-kicker: #b8d0e4;
+  /* Parágrafos de apoio em heroes (máximo contraste sobre azul escuro) */
+  --gh-hero-lead: #e8f2fa;
+
+  /* Botão claro sobre fundo azul (como «Alle akzeptieren» no original) */
+  --gh-cta-on-dark-bg: #ffffff;
+  --gh-cta-on-dark-text: #365673;
+  /* Hover mais visível que o branco puro (contraste com texto azul) */
+  --gh-cta-on-dark-hover: #e3edf5;
+  --gh-cta-on-dark-active: #d3e4ef;
+
+  /* Compat: antes «dourado»; agora branco / texto azul */
+  --gh-accent: var(--gh-cta-on-dark-bg);
+  --gh-accent-muted: var(--gh-on-dark-muted);
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Heroes: padding e título alinhados em todas as páginas */
+  --gh-page-hero-padding-block: clamp(2.25rem, 4vw, 3rem);
+  --gh-page-hero-title-size: clamp(1.85rem, 3.2vw, 2.4rem);
+
+  /* Fotos exportadas em círculo (PNG): zoom para preencher o retângulo da moldura */
+  --gh-photo-fill-zoom: 1.47;
+}
+
+/* Contenedor precisa overflow: hidden + cantos definidos no próprio frame */
+.gh-photo-fill {
+  transform-origin: center center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--p-surface-900, #2c3f54);
+  background: var(--p-surface-50);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Revelação ao scroll (usar com ghInView) */
+.gh-reveal {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--gh-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.gh-reveal.gh-in-view--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+    will-change: auto;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+}
+
+/* Âncoras com PrimeNG pButton — sem sublinhado (comportamento típico de <a href>) */
+a.p-button,
+a.p-button:hover,
+a.p-button:focus,
+a.p-button:focus-visible,
+a.p-button:active,
+a.p-button:visited {
+  text-decoration: none;
+}
+
+.gh-container {
+  width: min(1120px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.gh-section {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.gh-muted {
+  color: var(--p-surface-600, #5a6e82);
+}
+
+.gh-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--p-primary-600);
+}
+
+/* Leads dentro de heroes: nunca herdar .gh-muted (cinza para fundo claro) */
+.page-hero .page-lead,
+.page-hero--alt .page-lead,
+.page-hero--contact .page-lead {
+  margin: 0;
+  max-width: 42rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--gh-hero-lead) !important;
+}
+
+/* Padding e H1 padronizados: home (.hero) + páginas internas */
+.hero,
+.page-hero,
+.page-hero--alt,
+.page-hero--contact {
+  padding-block: var(--gh-page-hero-padding-block);
+}
+
+.hero__title,
+.page-hero h1,
+.page-hero--alt h1,
+.page-hero--contact h1 {
+  font-size: var(--gh-page-hero-title-size);
+}
+
+/* --------------------------------------------------------------------------
+ * Hovers e focos — PrimeNG coloca cor em .p-button-label / .p-button-icon;
+ * sem reforço, o texto pode «desaparecer» em fundos claros.
+ * -------------------------------------------------------------------------- */
+
+@mixin gh-pbutton-inherit-icon-label {
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
+
+/* Azul sólido (branco no texto) */
+:is(a, button).p-button.gh-cta-header:not(:disabled):hover,
+:is(a, button).p-button.gh-cta-header:not(:disabled):focus-visible {
+  background: var(--p-primary-700) !important;
+  border-color: transparent !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.gh-cta-header:not(:disabled):active {
+  background: var(--p-primary-800) !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.gh-mobile-cta:not(:disabled):hover,
+:is(a, button).p-button.gh-mobile-cta:not(:disabled):focus-visible {
+  background: var(--p-primary-700) !important;
+  border-color: transparent !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.gh-mobile-cta:not(:disabled):active {
+  background: var(--p-primary-800) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* Branco / azul escuro sobre hero ou faixa escura */
+:is(a, button).p-button.hero__btn-primary:not(:disabled):hover,
+:is(a, button).p-button.hero__btn-primary:not(:disabled):focus-visible,
+:is(a, button).p-button.cta-strip__btn:not(:disabled):hover,
+:is(a, button).p-button.cta-strip__btn:not(:disabled):focus-visible,
+:is(a, button).p-button.miet-cta__btn:not(:disabled):hover,
+:is(a, button).p-button.miet-cta__btn:not(:disabled):focus-visible {
+  background: var(--gh-cta-on-dark-hover) !important;
+  border-color: transparent !important;
+  color: var(--gh-cta-on-dark-text) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.hero__btn-primary:not(:disabled):active,
+:is(a, button).p-button.cta-strip__btn:not(:disabled):active,
+:is(a, button).p-button.miet-cta__btn:not(:disabled):active {
+  background: var(--gh-cta-on-dark-active) !important;
+  color: var(--p-primary-900) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* Contorno claro sobre hero */
+:is(a, button).p-button.hero__btn-outline:not(:disabled):hover,
+:is(a, button).p-button.hero__btn-outline:not(:disabled):focus-visible {
+  background: color-mix(in srgb, var(--p-surface-0) 22%, transparent) !important;
+  border-color: var(--p-surface-0) !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.hero__btn-outline:not(:disabled):active {
+  background: color-mix(in srgb, var(--p-surface-0) 32%, transparent) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* Primário em fundo claro (team, contact, about, referenzen, mietgeraete) */
+:is(a, button).p-button.team-teaser__btn:not(:disabled):hover,
+:is(a, button).p-button.team-teaser__btn:not(:disabled):focus-visible,
+:is(a, button).p-button.prose__cta:not(:disabled):hover,
+:is(a, button).p-button.prose__cta:not(:disabled):focus-visible,
+:is(a, button).p-button.contact-submit:not(:disabled):hover,
+:is(a, button).p-button.contact-submit:not(:disabled):focus-visible,
+:is(a, button).p-button.miet-submit:not(:disabled):hover,
+:is(a, button).p-button.miet-submit:not(:disabled):focus-visible,
+:is(a, button).p-button.miet-success__btn:not(:disabled):hover,
+:is(a, button).p-button.miet-success__btn:not(:disabled):focus-visible {
+  background: var(--p-primary-700) !important;
+  border-color: transparent !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.team-teaser__btn:not(:disabled):active,
+:is(a, button).p-button.prose__cta:not(:disabled):active,
+:is(a, button).p-button.contact-submit:not(:disabled):active,
+:is(a, button).p-button.miet-submit:not(:disabled):active,
+:is(a, button).p-button.miet-success__btn:not(:disabled):active {
+  background: var(--p-primary-800) !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* WhatsApp button — verde escuro no hover */
+:is(a, button).p-button.contact-whatsapp-btn:not(:disabled):hover,
+:is(a, button).p-button.contact-whatsapp-btn:not(:disabled):focus-visible {
+  background: #1fba59 !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+:is(a, button).p-button.contact-whatsapp-btn:not(:disabled):active {
+  background: #18a04d !important;
+  color: #fff !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* Botão dentro de .ref-note (wrapper pode ser div) */
+.ref-note :is(a, button).p-button:not(:disabled):hover,
+.ref-note :is(a, button).p-button:not(:disabled):focus-visible {
+  background: var(--p-primary-700) !important;
+  border-color: transparent !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+.ref-note :is(a, button).p-button:not(:disabled):active {
+  background: var(--p-primary-800) !important;
+  color: var(--p-surface-0) !important;
+  @include gh-pbutton-inherit-icon-label;
+}
+
+/* Links em texto */
+.contact-info-list a:hover,
+.contact-info-list a:focus-visible {
+  color: var(--p-primary-900);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.team-teaser__link:hover,
+.team-teaser__link:focus-visible {
+  color: var(--p-primary-800);
+}
+
+.gh-footer__links a:hover,
+.gh-footer__links a:focus-visible,
+.gh-footer__legacy:hover,
+.gh-footer__legacy:focus-visible {
+  color: var(--p-surface-0);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

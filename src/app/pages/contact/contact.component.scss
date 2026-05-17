@@ -1,0 +1,420 @@
+/* ---- Hero ---------------------------------------------------------------- */
+
+.page-hero--contact {
+  background: var(--gh-hero-wash);
+  color: var(--p-surface-0);
+
+  .gh-kicker {
+    color: var(--gh-on-dark-kicker);
+  }
+
+  h1 {
+    margin: 0.35rem 0 0.75rem;
+  }
+}
+
+/* ---- Section / layout --------------------------------------------------- */
+
+.contact-section {
+  background: var(--p-surface-50);
+}
+
+.contact-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 2.5rem;
+  }
+}
+
+/* ---- Form card ---------------------------------------------------------- */
+
+.contact-card {
+  background: var(--p-surface-0);
+  border-radius: 1.25rem;
+  border: 1px solid var(--p-surface-200);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow:
+    0 4px 6px -1px color-mix(in srgb, var(--p-primary-900) 5%, transparent),
+    0 2px 24px color-mix(in srgb, var(--p-primary-900) 6%, transparent);
+}
+
+.contact-card__head {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--p-surface-100);
+
+  h2 {
+    margin: 0 0 0.45rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--p-surface-600);
+    line-height: 1.55;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  ::ng-deep p-floatlabel {
+    width: 100%;
+  }
+
+  ::ng-deep input,
+  ::ng-deep .contact-textarea {
+    width: 100%;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--p-surface-700);
+}
+
+/* Force p-select to fill container */
+::ng-deep .w-full.p-select {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  gap: 1.25rem;
+
+  @media (min-width: 560px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.error {
+  color: var(--p-red-500, #d32f2f);
+  font-size: 0.85rem;
+  padding-inline: 0.25rem;
+}
+
+/* ---- Preferred contact checkboxes --------------------------------------- */
+
+.prefer-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prefer-group__legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--p-surface-700);
+  margin-bottom: 0.75rem;
+}
+
+.prefer-group__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.5rem;
+}
+
+.prefer-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.94rem;
+  cursor: pointer;
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+/* ---- Consent checkbox --------------------------------------------------- */
+
+.consent-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--p-surface-700);
+}
+
+.consent-link {
+  color: var(--p-primary-700);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: var(--p-primary-900);
+  }
+}
+
+/* ---- Submit button ------------------------------------------------------ */
+
+::ng-deep .contact-submit.p-button {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.35rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-block: 0.75rem;
+  background: var(--p-primary-600);
+  border: none;
+  color: var(--p-surface-0);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
+
+/* ---- Sidebar ------------------------------------------------------------ */
+
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-sidebar__figure {
+  margin: 0;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: var(--p-surface-100);
+  border: 1px solid var(--p-surface-200);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--p-primary-900) 10%, transparent);
+}
+
+.contact-sidebar__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 55%;
+
+  &.gh-photo-fill {
+    transform: scale(var(--gh-photo-fill-zoom));
+  }
+}
+
+.contact-sidebar__trust {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--p-primary-50) 90%, var(--p-surface-0));
+  border: 1px solid color-mix(in srgb, var(--p-primary-200) 60%, var(--p-surface-200));
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--p-primary-800);
+
+  .pi {
+    font-size: 1.1rem;
+    color: var(--p-primary-600);
+    flex-shrink: 0;
+  }
+}
+
+/* ---- Contact info list -------------------------------------------------- */
+
+.contact-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--p-surface-0);
+  border-radius: 0.85rem;
+  border: 1px solid var(--p-surface-200);
+  overflow: hidden;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.94rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--p-surface-100);
+    }
+
+    .pi {
+      color: var(--p-primary-600);
+      font-size: 1rem;
+      flex-shrink: 0;
+      width: 1.1rem;
+      text-align: center;
+    }
+  }
+
+  a {
+    color: var(--p-primary-700);
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+  }
+}
+
+/* ---- WhatsApp section --------------------------------------------------- */
+
+.contact-sidebar__whatsapp {
+  padding: 1.15rem 1.1rem 1.2rem;
+  border-radius: 0.85rem;
+  background: #f0faf4;
+  border: 1px solid #b7dfca;
+}
+
+.contact-sidebar__whatsapp-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a5c38;
+}
+
+.contact-sidebar__whatsapp-lead {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #2d7a50;
+}
+
+::ng-deep .contact-whatsapp-btn.p-button {
+  width: 100%;
+  justify-content: center;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.94rem;
+  background: #25d366;
+  border: none;
+  color: #fff;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
+
+/* ---- Social ------------------------------------------------------------ */
+
+.contact-sidebar__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-sidebar__social-label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--p-surface-500);
+}
+
+.contact-social__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.contact-social__link,
+.contact-social__slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.65rem;
+  font-size: 1.2rem;
+  background: var(--p-primary-600);
+  color: var(--p-surface-0);
+  box-shadow:
+    0 2px 6px color-mix(in srgb, var(--p-primary-900) 18%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--p-surface-0) 22%, transparent);
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.contact-social__link {
+  text-decoration: none;
+
+  &:hover {
+    background: var(--p-primary-700);
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 14px color-mix(in srgb, var(--p-primary-900) 22%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--p-surface-0) 18%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-400);
+    outline-offset: 3px;
+  }
+}
+
+.contact-social__slot {
+  cursor: default;
+  opacity: 0.9;
+  background: color-mix(in srgb, var(--p-primary-600) 88%, var(--p-surface-500));
+}
+
+/* ---- Tagline ------------------------------------------------------------ */
+
+.contact-tagline {
+  background: var(--p-surface-0);
+  border-top: 1px solid var(--p-surface-100);
+  padding-block: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.contact-tagline__text {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--p-primary-800);
+  letter-spacing: -0.01em;
+}

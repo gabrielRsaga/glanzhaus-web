@@ -1,0 +1,275 @@
+@if (showFloatBtn()) {
+  <button type="button" class="miet-float-btn" (click)="scrollToForm()" aria-label="Zum Anfrageformular scrollen">
+    <i class="pi pi-send" aria-hidden="true"></i>
+    <span>Gerät anfragen</span>
+  </button>
+}
+
+<section class="page-hero page-hero--miet">
+  <div class="gh-container">
+    <p class="gh-kicker">Mietgeräte</p>
+    <h1 ghInView>Professionelle Geräte mieten</h1>
+    <p class="page-lead" ghInView [delayMs]="80">
+      Für alle, die lieber selbst Hand anlegen — aber das passende Gerät fehlt. Einfach mieten, nutzen, zurückbringen.
+    </p>
+  </div>
+</section>
+
+<section class="gh-section miet-section">
+  <div class="gh-container">
+    <div class="miet-grid">
+      @for (item of equipment; track item.name; let i = $index) {
+        <article class="miet-card" ghInView [delayMs]="i * 70">
+          <figure class="miet-card__figure">
+            <img
+              class="miet-card__img"
+              [src]="item.image"
+              width="640"
+              height="360"
+              [alt]="item.name"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+          <div class="miet-card__content">
+            <div class="miet-card__header">
+              <span class="miet-card__icon-wrap" aria-hidden="true">
+                <i [class]="item.icon + ' miet-card__icon'"></i>
+              </span>
+              <div class="miet-card__title-group">
+                <h2 class="miet-card__name">{{ item.name }}</h2>
+                @if (item.subtitle) {
+                  <p class="miet-card__subtitle">{{ item.subtitle }}</p>
+                }
+              </div>
+            </div>
+
+            <div class="miet-card__body">
+              <div class="miet-card__info">
+                <p class="miet-card__desc">{{ item.description }}</p>
+                @if (item.includes.length) {
+                  <div class="miet-card__includes">
+                    <p class="miet-card__meta-label">Im Lieferumfang</p>
+                    <ul class="miet-card__includes-list">
+                      @for (inc of item.includes; track inc) {
+                        <li>{{ inc }}</li>
+                      }
+                    </ul>
+                  </div>
+                }
+                @if (item.note) {
+                  <p class="miet-card__note">
+                    <i class="pi pi-info-circle" aria-hidden="true"></i>
+                    {{ item.note }}
+                  </p>
+                }
+              </div>
+
+              <div class="miet-card__pricing">
+                <p class="miet-card__meta-label">Mietpreise</p>
+                <table class="miet-table" aria-label="Mietpreise">
+                  <tbody>
+                    @for (row of item.pricing; track row.label) {
+                      <tr>
+                        <td class="miet-table__label">{{ row.label }}</td>
+                        <td class="miet-table__price">CHF {{ row.price }}.—</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <div class="miet-conditions" ghInView>
+      <i class="pi pi-info-circle" aria-hidden="true"></i>
+      <p>
+        Alle Preise inkl. MwSt. Abholung und Rückgabe nach Vereinbarung. Das Gerät wird voll getankt bzw. vollständig
+        ausgestattet übergeben und in gleichem Zustand zurückerwartet. Kaution wird bei Übergabe vereinbart.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="miet-form-section" id="miet-form-anchor">
+  <div class="gh-container">
+    <div class="miet-form-wrap" ghInView>
+
+      <!-- ── Left info panel ─────────────────────────────────── -->
+      <aside class="miet-panel">
+        <p class="gh-kicker miet-panel__kicker">Mietgerät anfragen</p>
+        <h2 class="miet-panel__title">Gerät reservieren</h2>
+        <p class="miet-panel__lead">
+          Füllen Sie das Formular aus — ich melde mich zeitnah zur Bestätigung von Verfügbarkeit und Abholtermin.
+        </p>
+
+        <ul class="miet-panel__benefits" aria-label="Ihre Vorteile">
+          <li><i class="pi pi-check-circle" aria-hidden="true"></i>Schnelle Rückmeldung</li>
+          <li><i class="pi pi-check-circle" aria-hidden="true"></i>Flexible Mietdauer</li>
+          <li><i class="pi pi-check-circle" aria-hidden="true"></i>Persönliche Übergabe</li>
+          <li><i class="pi pi-check-circle" aria-hidden="true"></i>Gerät voll betriebsbereit</li>
+        </ul>
+
+        <div class="miet-panel__divider"></div>
+
+        <p class="miet-panel__contact-heading">Oder direkt melden</p>
+        <div class="miet-panel__contacts">
+          <a href="tel:+41625081529" class="miet-panel__contact-link">
+            <span class="miet-panel__contact-icon"><i class="pi pi-phone" aria-hidden="true"></i></span>
+            <span>062 508 15 29</span>
+          </a>
+          <a href="https://wa.me/41625081529" class="miet-panel__contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="miet-panel__contact-icon miet-panel__contact-icon--wa"><i class="pi pi-whatsapp" aria-hidden="true"></i></span>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ── Right form body ─────────────────────────────────── -->
+      <div class="miet-form-body">
+        @if (submitted) {
+          <div class="miet-success">
+            <span class="miet-success__ring" aria-hidden="true">
+              <i class="pi pi-check miet-success__icon"></i>
+            </span>
+            <h3>Anfrage erhalten!</h3>
+            <p>Ich melde mich zeitnah bei Ihnen zur Bestätigung von Verfügbarkeit und Abholtermin.</p>
+            <button
+              pButton
+              type="button"
+              label="Neue Anfrage"
+              icon="pi pi-plus"
+              (click)="submitted = false"
+              class="miet-success__btn"
+            ></button>
+          </div>
+        } @else {
+          <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+
+            <!-- ① Gerät -->
+            <div class="miet-group">
+              <p class="miet-group__heading">
+                <i class="pi pi-box" aria-hidden="true"></i>Gewünschtes Gerät
+              </p>
+              <div class="miet-field">
+                <p-floatlabel variant="on">
+                  <p-select
+                    formControlName="geraet"
+                    inputId="miet-geraet"
+                    [options]="geraeteOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    styleClass="w-full"
+                  />
+                  <label for="miet-geraet">Gerät auswählen *</label>
+                </p-floatlabel>
+                @if (hasError('geraet')) {
+                  <span class="miet-field__error">Bitte wählen Sie ein Gerät aus.</span>
+                }
+              </div>
+            </div>
+
+            <!-- ② Kontaktdaten -->
+            <div class="miet-group">
+              <p class="miet-group__heading">
+                <i class="pi pi-user" aria-hidden="true"></i>Ihre Kontaktdaten
+              </p>
+              <div class="miet-grid">
+                <div class="miet-field">
+                  <p-floatlabel variant="on">
+                    <input pInputText id="miet-vorname" formControlName="vorname" class="w-full" autocomplete="given-name" />
+                    <label for="miet-vorname">Vorname *</label>
+                  </p-floatlabel>
+                  @if (hasError('vorname')) {
+                    <span class="miet-field__error">Pflichtfeld (min. 2 Zeichen).</span>
+                  }
+                </div>
+                <div class="miet-field">
+                  <p-floatlabel variant="on">
+                    <input pInputText id="miet-name" formControlName="name" class="w-full" autocomplete="family-name" />
+                    <label for="miet-name">Name *</label>
+                  </p-floatlabel>
+                  @if (hasError('name')) {
+                    <span class="miet-field__error">Pflichtfeld (min. 2 Zeichen).</span>
+                  }
+                </div>
+                <div class="miet-field">
+                  <p-floatlabel variant="on">
+                    <input pInputText id="miet-email" type="email" formControlName="email" class="w-full" autocomplete="email" />
+                    <label for="miet-email">E-Mail *</label>
+                  </p-floatlabel>
+                  @if (hasError('email')) {
+                    <span class="miet-field__error">Gültige E-Mail-Adresse eingeben.</span>
+                  }
+                </div>
+                <div class="miet-field">
+                  <p-floatlabel variant="on">
+                    <input pInputText id="miet-phone" type="tel" formControlName="phone" class="w-full" autocomplete="tel" />
+                    <label for="miet-phone">Telefon (optional)</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+            </div>
+
+            <!-- ③ Mietdauer -->
+            <div class="miet-group">
+              <p class="miet-group__heading">
+                <i class="pi pi-calendar" aria-hidden="true"></i>Mietdauer
+              </p>
+              <div class="miet-date-row">
+                <div class="miet-date-field">
+                  <label class="miet-date-label" for="miet-datum-von">Von *</label>
+                  <input class="miet-date-input" type="date" id="miet-datum-von" formControlName="datumVon" />
+                  @if (hasError('datumVon')) {
+                    <span class="miet-field__error">Bitte Startdatum wählen.</span>
+                  }
+                </div>
+                <span class="miet-date-sep" aria-hidden="true"><i class="pi pi-arrow-right"></i></span>
+                <div class="miet-date-field">
+                  <label class="miet-date-label" for="miet-datum-bis">Bis *</label>
+                  <input class="miet-date-input" type="date" id="miet-datum-bis" formControlName="datumBis" />
+                  @if (hasError('datumBis')) {
+                    <span class="miet-field__error">Bitte Enddatum wählen.</span>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ Nachricht -->
+            <div class="miet-group">
+              <p class="miet-group__heading">
+                <i class="pi pi-comment" aria-hidden="true"></i>Nachricht <span class="miet-group__optional">(optional)</span>
+              </p>
+              <div class="miet-field">
+                <p-floatlabel variant="on">
+                  <textarea pTextarea id="miet-nachricht" formControlName="nachricht" [rows]="3" class="w-full" style="resize:vertical"></textarea>
+                  <label for="miet-nachricht">Ihre Nachricht</label>
+                </p-floatlabel>
+              </div>
+            </div>
+
+            <!-- ⑤ Datenschutz + Submit -->
+            <div class="miet-form-footer">
+              <div class="miet-field miet-field--check">
+                <p-checkbox formControlName="datenschutz" inputId="miet-datenschutz" [binary]="true" />
+                <label for="miet-datenschutz" class="miet-check-label">
+                  Ich habe die <a routerLink="/datenschutz" class="miet-link">Datenschutzbestimmungen</a> gelesen und bin damit einverstanden. *
+                </label>
+                @if (hasError('datenschutz')) {
+                  <span class="miet-field__error miet-field__error--wide">Bitte Datenschutz bestätigen.</span>
+                }
+              </div>
+              <button pButton type="submit" label="Absenden" icon="pi pi-send" iconPos="right" class="miet-submit"></button>
+            </div>
+
+          </form>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

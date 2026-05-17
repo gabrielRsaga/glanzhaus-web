@@ -1,0 +1,164 @@
+<section class="hero">
+  <div class="hero__bg-breathe" aria-hidden="true"></div>
+  <div class="gh-container hero__grid">
+    <div class="hero__copy" ghInView>
+      <p class="gh-kicker">Mittelland · Reinigung &amp; Garten</p>
+      <h1 class="hero__title">Willkommen bei Glanzhaus</h1>
+      <p class="hero__lead">
+        Ihre Nummer 1 für Reinigung, Hauswartung und Gartenpflege — mit dem Anspruch, den Sie für Ihr Zuhause oder
+        Ihr Geschäft erwarten dürfen.
+      </p>
+      <div class="hero__actions">
+        <a pButton routerLink="/kontakt" label="Kostenloses Angebot" icon="pi pi-arrow-right" iconPos="right" class="hero__btn-primary"></a>
+        <a pButton routerLink="/ueber-uns" label="Mehr erfahren" [outlined]="true" class="hero__btn-outline"></a>
+      </div>
+    </div>
+    <figure class="hero__visual" ghInView [delayMs]="120">
+      <div class="hero__photo-frame">
+        <img
+          class="hero__photo gh-photo-fill"
+          [src]="img.heroFenster"
+          width="800"
+          height="600"
+          alt="Professionelle Fensterreinigung mit streifenfreiem Ergebnis"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero__photo-gradient" aria-hidden="true"></div>
+      </div>
+      <figcaption class="hero__quote-card">
+        <i class="pi pi-shield-check hero__panel-icon" aria-hidden="true"></i>
+        <p class="hero__panel-quote">«Wo Sauberkeit wohnt, blüht die Schönheit des Lebens.»</p>
+        <p class="hero__panel-name">— Manuel Mikes</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="dienstleistungen" class="gh-section services">
+  <div class="gh-container">
+    <header class="section-head" ghInView>
+      <h2>Unsere Dienstleistungen</h2>
+      <p class="gh-muted">Alles aus einer Hand — sorgfältig geplant und zuverlässig umgesetzt.</p>
+    </header>
+    <div class="services__grid">
+      @for (s of services; track s.title; let i = $index) {
+        <p-card styleClass="gh-card" ghInView [delayMs]="i * 75">
+          <div class="gh-card-inner">
+            <figure class="gh-card-figure">
+              <img
+                class="gh-card-avatar"
+                [src]="s.image"
+                width="160"
+                height="160"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="gh-card-main">
+              <div class="gh-card-heading">
+                <h3 class="gh-card-title">{{ s.title }}</h3>
+                <div class="gh-card-icon-wrap" aria-hidden="true">
+                  <i [class]="s.icon + ' gh-card-icon'"></i>
+                </div>
+              </div>
+              <p class="gh-card-text">{{ s.text }}</p>
+            </div>
+          </div>
+        </p-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="services-cta-mid">
+  <div class="gh-container services-cta-mid__inner" ghInView>
+    <div class="services-cta-mid__text">
+      <h2>Möchten Sie Ihre Immobilie professionell reinigen lassen?</h2>
+      <p>Einfach anfragen — kostenlose Offerte, klare Konditionen, zuverlässige Umsetzung.</p>
+    </div>
+    <a pButton routerLink="/kontakt" label="Jetzt anfragen" icon="pi pi-arrow-right" iconPos="right" class="miet-cta__btn"></a>
+  </div>
+</section>
+
+<section class="gh-section pillars">
+  <div class="gh-container">
+    <header class="section-head section-head--light" ghInView>
+      <h2>Warum Glanzhaus?</h2>
+      <p>Was unsere Kundschaft schätzt — und woran Sie sich orientieren können.</p>
+    </header>
+    <div class="pillars__grid">
+      @for (p of pillars; track p.title; let i = $index) {
+        <article class="pillar" ghInView [delayMs]="i * 60">
+          <span class="pillar__icon" aria-hidden="true"><i [class]="p.icon"></i></span>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="gh-section team-teaser">
+  <div class="gh-container team-teaser__inner">
+    <div class="team-teaser__copy" ghInView>
+      <p class="gh-kicker">Team</p>
+      <h2>Manuel Mikes</h2>
+      <p class="team-teaser__role">Der «Glanz-Bringer»</p>
+      <p class="gh-muted team-teaser__text">
+        Persönliche Betreuung vom ersten Kontakt bis zur fertigen Arbeit. Ob Reinigung, kleine Reparaturen oder
+        Gartenpflege — Qualität entsteht dort, wo Detail und Termintreue stimmen.
+      </p>
+      <a pButton routerLink="/kontakt" label="Jetzt kontaktieren" icon="pi pi-send" class="team-teaser__btn"></a>
+    </div>
+    <div class="team-teaser__visual" ghInView [delayMs]="100">
+      <img
+        class="team-teaser__photo"
+        [src]="img.teaserGarten"
+        width="560"
+        height="700"
+        alt="Manuel Mikes, Glanzhaus — persönliche Betreuung"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="team-teaser__photo-accent" aria-hidden="true"></div>
+    </div>
+    <aside class="team-teaser__aside" aria-label="Referenzen" ghInView [delayMs]="180">
+      <h3>Referenzen</h3>
+      <p class="gh-muted">
+        Vertrauen entsteht durch wiederkehrende Aufträge. Schauen Sie sich unsere Referenzen an oder sprechen Sie uns
+        direkt an.
+      </p>
+      <a routerLink="/referenzen" class="team-teaser__link">Zu den Referenzen <i class="pi pi-arrow-right"></i></a>
+    </aside>
+  </div>
+</section>
+
+<section class="gh-section partners-section">
+  <div class="gh-container">
+    <header class="section-head partners-head" ghInView>
+      <p class="gh-kicker">Partner</p>
+      <h2>Unsere Partner</h2>
+      <p class="gh-muted">Zusammenarbeit, die auf gegenseitigem Vertrauen basiert.</p>
+    </header>
+    <div class="partners-grid" ghInView [delayMs]="80">
+      @for (p of partners; track p.name) {
+        <a class="partner-card" [href]="p.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="p.name">
+          <img class="partner-card__logo" [src]="p.logo" [alt]="p.name" loading="lazy" decoding="async" />
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="gh-container cta-strip__inner">
+    <div ghInView>
+      <h2>Bereit für mehr Glanz?</h2>
+      <p>Individuelles, unverbindliches Angebot — wir melden uns zeitnah bei Ihnen.</p>
+    </div>
+    <a pButton routerLink="/kontakt" label="Zur Kontaktseite" icon="pi pi-envelope" [raised]="true" class="cta-strip__btn" ghInView [delayMs]="80"></a>
+  </div>
+</section>

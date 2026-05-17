@@ -1,0 +1,720 @@
+/* ── Floating CTA button ───────────────────────────────────── */
+
+.miet-float-btn {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.4rem;
+  background: var(--p-primary-600);
+  color: var(--p-surface-0);
+  border: none;
+  border-radius: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 8px 24px color-mix(in srgb, var(--p-primary-900) 38%, transparent),
+    0 2px 6px color-mix(in srgb, var(--p-primary-900) 20%, transparent);
+  animation: miet-float-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  .pi {
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    background: var(--p-primary-700);
+    transform: translateY(-3px);
+    box-shadow:
+      0 14px 36px color-mix(in srgb, var(--p-primary-900) 45%, transparent),
+      0 4px 10px color-mix(in srgb, var(--p-primary-900) 22%, transparent);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-300);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes miet-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .miet-float-btn {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ── Page hero ─────────────────────────────────────────────── */
+
+.page-hero--miet {
+  background: var(--gh-hero-wash);
+  color: var(--p-surface-0);
+
+  .gh-kicker {
+    color: var(--gh-on-dark-kicker);
+  }
+
+  h1 {
+    margin: 0.35rem 0 0;
+  }
+}
+
+.miet-section {
+  background: var(--p-surface-50);
+}
+
+.miet-grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.miet-card {
+  background: var(--p-surface-0);
+  border-radius: 1.25rem;
+  border: 1px solid var(--p-surface-200);
+  overflow: hidden;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--p-primary-900) 5%, transparent);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--p-primary-900) 12%, transparent);
+    border-color: var(--p-primary-200);
+  }
+}
+
+.miet-card__figure {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--p-surface-0);
+  border-bottom: 1px solid var(--p-surface-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.miet-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+
+.miet-card:hover .miet-card__img {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .miet-card__img {
+    transition: none;
+  }
+}
+
+.miet-card__content {
+  padding: clamp(1.2rem, 2.5vw, 1.65rem);
+}
+
+.miet-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--p-surface-100);
+}
+
+.miet-card__icon-wrap {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--p-primary-50) 88%, var(--p-surface-0));
+}
+
+.miet-card__icon {
+  color: var(--p-primary-600);
+  font-size: 1.2rem;
+}
+
+.miet-card__title-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.miet-card__name {
+  margin: 0 0 0.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--p-surface-900);
+  line-height: 1.25;
+}
+
+.miet-card__subtitle {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--p-surface-500);
+  font-weight: 500;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  letter-spacing: 0.02em;
+}
+
+.miet-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+
+  @media (min-width: 500px) {
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+}
+
+.miet-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.miet-card__desc {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  color: var(--p-surface-600);
+  line-height: 1.6;
+}
+
+.miet-card__includes {
+  margin-top: 0.85rem;
+}
+
+.miet-card__meta-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--p-surface-400);
+}
+
+.miet-card__includes-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.85rem;
+    color: var(--p-surface-700);
+
+    &::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--p-primary-400);
+      flex-shrink: 0;
+    }
+  }
+}
+
+.miet-card__note {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.85rem 0 0;
+  font-size: 0.82rem;
+  color: var(--p-surface-500);
+
+  .pi {
+    color: var(--p-primary-500);
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+}
+
+.miet-card__pricing {
+  flex-shrink: 0;
+  min-width: 140px;
+
+  @media (min-width: 500px) {
+    border-left: 1px solid var(--p-surface-100);
+    padding-left: 1.25rem;
+  }
+}
+
+.miet-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr + tr td {
+    border-top: 1px solid var(--p-surface-100);
+  }
+
+  td {
+    padding: 0.42rem 0;
+    font-size: 0.88rem;
+    color: var(--p-surface-700);
+    white-space: nowrap;
+  }
+}
+
+.miet-table__label {
+  padding-right: 1.5rem;
+}
+
+.miet-table__price {
+  font-weight: 700;
+  color: var(--p-primary-700);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* ---- Conditions note ---------------------------------------------------- */
+
+.miet-conditions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--p-surface-0);
+  border-radius: 0.85rem;
+  border: 1px solid var(--p-surface-200);
+
+  .pi {
+    flex-shrink: 0;
+    color: var(--p-primary-600);
+    margin-top: 0.15rem;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--p-surface-600);
+    line-height: 1.6;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   Form section
+   ════════════════════════════════════════════════════════════ */
+
+.miet-form-section {
+  background: var(--p-primary-950);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+/* Split card: dark panel left + white form right */
+.miet-form-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px color-mix(in srgb, var(--p-primary-950) 55%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--p-surface-0) 8%, transparent);
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+}
+
+/* ── Left info panel ───────────────────────────────────────── */
+
+.miet-panel {
+  background: var(--p-primary-800);
+  padding: clamp(2rem, 5vw, 3rem);
+  color: var(--p-surface-0);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -30% -10% auto auto;
+    width: min(380px, 80vw);
+    height: min(380px, 80vw);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--p-surface-0) 8%, transparent) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.miet-panel__kicker {
+  color: var(--gh-on-dark-kicker);
+  margin: 0 0 0.6rem;
+}
+
+.miet-panel__title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+}
+
+.miet-panel__lead {
+  margin: 0 0 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gh-on-dark-muted);
+}
+
+.miet-panel__benefits {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.92rem;
+    color: var(--p-surface-0);
+    font-weight: 500;
+  }
+
+  .pi {
+    color: var(--gh-on-dark-kicker);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+}
+
+.miet-panel__divider {
+  height: 1px;
+  background: color-mix(in srgb, var(--p-surface-0) 14%, transparent);
+  margin-bottom: 1.75rem;
+}
+
+.miet-panel__contact-heading {
+  margin: 0 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gh-on-dark-kicker);
+}
+
+.miet-panel__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.miet-panel__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--p-surface-0);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.miet-panel__contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--p-surface-0) 12%, transparent);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+
+  &--wa {
+    background: #25d366;
+  }
+}
+
+/* ── Right form body ───────────────────────────────────────── */
+
+.miet-form-body {
+  background: var(--p-surface-0);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--p-surface-900);
+}
+
+/* ── Form groups ───────────────────────────────────────────── */
+
+.miet-group {
+  & + .miet-group {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--p-surface-100);
+  }
+}
+
+.miet-group__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--p-surface-400);
+
+  .pi {
+    color: var(--p-primary-500);
+    font-size: 0.85rem;
+  }
+}
+
+.miet-group__optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--p-surface-400);
+  font-size: 0.72rem;
+}
+
+/* ── Field helpers ─────────────────────────────────────────── */
+
+.miet-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  &--check {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+}
+
+::ng-deep .miet-field p-floatlabel,
+::ng-deep .miet-field p-select {
+  width: 100%;
+}
+
+/* Two-column grid for kontakt fields */
+.miet-grid {
+  display: grid;
+  gap: 1.15rem;
+
+  @media (min-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Date row ──────────────────────────────────────────────── */
+
+.miet-date-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.miet-date-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.miet-date-sep {
+  flex-shrink: 0;
+  margin-top: 2.1rem;
+  color: var(--p-surface-400);
+  font-size: 0.8rem;
+}
+
+.miet-date-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--p-surface-400);
+}
+
+.miet-date-input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--p-surface-300);
+  border-radius: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--p-surface-900);
+  background: var(--p-surface-0);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--p-primary-500);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--p-primary-500) 20%, transparent);
+  }
+}
+
+/* ── Error messages ────────────────────────────────────────── */
+
+.miet-field__error {
+  font-size: 0.8rem;
+  color: #dc2626;
+
+  &--wide {
+    flex-basis: 100%;
+  }
+}
+
+/* ── Datenschutz ───────────────────────────────────────────── */
+
+.miet-check-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  color: var(--p-surface-600);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.miet-link {
+  color: var(--p-primary-600);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: var(--p-primary-800);
+  }
+}
+
+/* ── Form footer (checkbox + submit) ───────────────────────── */
+
+.miet-form-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--p-surface-100);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Submit button ─────────────────────────────────────────── */
+
+::ng-deep .miet-submit.p-button {
+  width: 100%;
+  justify-content: center;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-block: 0.85rem;
+  background: var(--p-primary-600);
+  border: none;
+  color: var(--p-surface-0);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
+
+/* ── Success state ─────────────────────────────────────────── */
+
+.miet-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  gap: 0;
+}
+
+.miet-success__ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--p-primary-500) 12%, transparent);
+  border: 2px solid color-mix(in srgb, var(--p-primary-500) 30%, transparent);
+  margin-bottom: 1.25rem;
+}
+
+.miet-success__icon {
+  font-size: 2rem;
+  color: var(--p-primary-600);
+}
+
+.miet-success h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.5rem;
+}
+
+.miet-success p {
+  margin: 0 0 2rem;
+  color: var(--p-surface-600);
+  font-size: 0.95rem;
+  max-width: 26rem;
+  line-height: 1.6;
+}
+
+::ng-deep .miet-success__btn.p-button {
+  border-radius: 2rem;
+  font-weight: 600;
+  background: var(--p-primary-600);
+  border: none;
+  color: var(--p-surface-0);
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}

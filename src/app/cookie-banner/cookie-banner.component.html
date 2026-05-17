@@ -1,0 +1,21 @@
+@if (visible()) {
+  <div class="cookie-banner" role="dialog" aria-label="Cookie-Einstellungen" aria-live="polite">
+    <div class="gh-container cookie-banner__inner">
+      <div class="cookie-banner__text">
+        <p class="cookie-banner__title">Diese Website verwendet Cookies</p>
+        <p class="cookie-banner__desc">
+          Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Lesen Sie unsere
+          <a routerLink="/datenschutz" class="cookie-banner__link">Datenschutzbestimmungen</a>.
+        </p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--outline" (click)="configure()">
+          Cookie Einstellungen
+        </button>
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--solid" (click)="accept()">
+          Alle akzeptieren
+        </button>
+      </div>
+    </div>
+  </div>
+}

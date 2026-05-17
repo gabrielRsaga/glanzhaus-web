@@ -1,0 +1,232 @@
+<section class="page-hero page-hero--contact">
+  <div class="gh-container">
+    <p class="gh-kicker">Kontakt</p>
+    <h1 ghInView>Ich freue mich auf Ihre Anfrage!</h1>
+    <p class="page-lead" ghInView [delayMs]="80">
+      Kostenlose Offerte für Ihr Projekt — wir melden uns mit einem klaren Vorschlag.
+    </p>
+  </div>
+</section>
+
+<section class="gh-section contact-section">
+  <div class="gh-container contact-layout">
+
+    <!-- Form card -->
+    <div class="contact-card" ghInView>
+      <header class="contact-card__head">
+        <h2>Kontakt</h2>
+        <p>Füllen Sie das Formular aus — wir antworten innerhalb von 24 Stunden.</p>
+      </header>
+
+      <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()">
+
+        <!-- Anfrage für -->
+        <div class="field-wrap">
+          <label for="anfrage" class="form-label">Anfrage für *</label>
+          <p-select
+            inputId="anfrage"
+            [options]="anfrageOptions"
+            optionLabel="label"
+            optionValue="value"
+            formControlName="anfrage"
+            placeholder="Bitte auswählen"
+            styleClass="w-full"
+          />
+          @if (submitted && form.controls.anfrage.invalid) {
+            <small class="error">Bitte wählen Sie eine Kategorie.</small>
+          }
+        </div>
+
+        <!-- Vorname + Name -->
+        <div class="form-row">
+          <div class="field-wrap">
+            <p-floatlabel variant="on">
+              <input pInputText id="vorname" formControlName="vorname" autocomplete="given-name" />
+              <label for="vorname">Vorname *</label>
+            </p-floatlabel>
+            @if (submitted && form.controls.vorname.invalid) {
+              <small class="error">Bitte Vorname angeben.</small>
+            }
+          </div>
+          <div class="field-wrap">
+            <p-floatlabel variant="on">
+              <input pInputText id="name" formControlName="name" autocomplete="family-name" />
+              <label for="name">Name *</label>
+            </p-floatlabel>
+            @if (submitted && form.controls.name.invalid) {
+              <small class="error">Bitte Name angeben.</small>
+            }
+          </div>
+        </div>
+
+        <!-- PLZ/Ort + E-Mail -->
+        <div class="form-row">
+          <div class="field-wrap">
+            <p-floatlabel variant="on">
+              <input pInputText id="plzOrt" formControlName="plzOrt" autocomplete="postal-code" />
+              <label for="plzOrt">PLZ / Ort</label>
+            </p-floatlabel>
+          </div>
+          <div class="field-wrap">
+            <p-floatlabel variant="on">
+              <input pInputText id="email" type="email" formControlName="email" autocomplete="email" />
+              <label for="email">E-Mail *</label>
+            </p-floatlabel>
+            @if (submitted && form.controls.email.invalid) {
+              <small class="error">Gültige E-Mail erforderlich.</small>
+            }
+          </div>
+        </div>
+
+        <!-- Telefon -->
+        <p-floatlabel variant="on">
+          <input pInputText id="phone" type="tel" formControlName="phone" autocomplete="tel" />
+          <label for="phone">Telefon (optional)</label>
+        </p-floatlabel>
+
+        <!-- Bevorzugte Kontaktart -->
+        <fieldset class="prefer-group">
+          <legend class="prefer-group__legend">Bevorzugte Kontaktart</legend>
+          <div class="prefer-group__options">
+            <div class="prefer-option">
+              <p-checkbox inputId="kt" formControlName="kontaktTelefon" [binary]="true" />
+              <label for="kt">Telefon</label>
+            </div>
+            <div class="prefer-option">
+              <p-checkbox inputId="kw" formControlName="kontaktWhatsapp" [binary]="true" />
+              <label for="kw">SMS / WhatsApp</label>
+            </div>
+            <div class="prefer-option">
+              <p-checkbox inputId="ke" formControlName="kontaktEmail" [binary]="true" />
+              <label for="ke">E-Mail</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Nachricht -->
+        <div class="field-wrap">
+          <p-floatlabel variant="on">
+            <textarea
+              pTextarea
+              id="message"
+              formControlName="message"
+              [rows]="5"
+              [autoResize]="true"
+              class="contact-textarea"
+            ></textarea>
+            <label for="message">Nachricht *</label>
+          </p-floatlabel>
+          @if (submitted && form.controls.message.invalid) {
+            <small class="error">Bitte beschreiben Sie Ihr Anliegen etwas ausführlicher.</small>
+          }
+        </div>
+
+        <!-- Datenschutz -->
+        <div class="consent-wrap">
+          <div class="consent-row">
+            <p-checkbox inputId="datenschutz" formControlName="datenschutz" [binary]="true" />
+            <label for="datenschutz">
+              Ich habe die <a routerLink="/datenschutz" class="consent-link">Datenschutzbestimmungen</a> gelesen und bin damit einverstanden. *
+            </label>
+          </div>
+          @if (submitted && form.controls.datenschutz.invalid) {
+            <small class="error">Bitte akzeptieren Sie die Datenschutzbestimmungen.</small>
+          }
+        </div>
+
+        <button
+          pButton
+          type="submit"
+          label="Absenden"
+          icon="pi pi-send"
+          iconPos="right"
+          class="contact-submit"
+        ></button>
+      </form>
+    </div>
+
+    <!-- Info sidebar -->
+    <aside class="contact-sidebar" ghInView [delayMs]="140">
+      <figure class="contact-sidebar__figure">
+        <img
+          class="contact-sidebar__img gh-photo-fill"
+          [src]="img.kontaktMotiv"
+          width="640"
+          height="480"
+          alt="Gartenpflege und gepflegte Aussenanlagen im Mittelland"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="contact-sidebar__trust">
+        <i class="pi pi-clock" aria-hidden="true"></i>
+        <span>Antwort innerhalb von 24 Stunden</span>
+      </div>
+
+      <ul class="contact-info-list">
+        <li>
+          <i class="pi pi-envelope" aria-hidden="true"></i>
+          <a href="mailto:info@glanzhaus.ch">info&#64;glanzhaus.ch</a>
+        </li>
+        <li>
+          <i class="pi pi-map-marker" aria-hidden="true"></i>
+          <span>Mittelland (CH)</span>
+        </li>
+      </ul>
+
+      <!-- WhatsApp -->
+      <div class="contact-sidebar__whatsapp">
+        <h3 class="contact-sidebar__whatsapp-title">Persönlicher Service</h3>
+        <p class="contact-sidebar__whatsapp-lead">
+          Schnell und unkompliziert — kontaktieren Sie mich direkt auf WhatsApp.
+        </p>
+        <a
+          href="https://wa.me/41625081529"
+          target="_blank"
+          rel="noopener noreferrer"
+          pButton
+          label="Direkt auf WhatsApp"
+          icon="pi pi-whatsapp"
+          class="contact-whatsapp-btn"
+        ></a>
+      </div>
+
+      <!-- Social -->
+      <div class="contact-sidebar__social" aria-label="Social Media">
+        <p class="contact-sidebar__social-label">Folgen Sie uns</p>
+        <ul class="contact-social__list">
+          @for (s of socialMedia; track s.label) {
+            <li>
+              @if (s.href) {
+                <a
+                  class="contact-social__link"
+                  [href]="s.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="s.label"
+                >
+                  <i [class]="s.icon" aria-hidden="true"></i>
+                </a>
+              } @else {
+                <span class="contact-social__slot" role="img" [attr.aria-label]="s.label">
+                  <i [class]="s.icon" aria-hidden="true"></i>
+                </span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Tagline -->
+<div class="contact-tagline">
+  <div class="gh-container">
+    <blockquote class="contact-tagline__text" ghInView>
+      «Wenn das Zuhause glänzt, strahlt auch das Herz.»
+    </blockquote>
+  </div>
+</div>

@@ -1,0 +1,189 @@
+/* ---- Hero ---------------------------------------------------------------- */
+
+.page-hero--imp {
+  background: var(--gh-hero-wash);
+  color: var(--p-surface-0);
+  padding-block: var(--gh-page-hero-padding-block);
+
+  .gh-kicker {
+    color: var(--gh-on-dark-kicker);
+  }
+
+  h1 {
+    margin: 0.35rem 0 0;
+    font-size: var(--gh-page-hero-title-size);
+    line-height: 1.2;
+  }
+}
+
+/* ---- Section / layout --------------------------------------------------- */
+
+.imp-section {
+  background: var(--p-surface-50);
+}
+
+.imp-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 860px;
+}
+
+/* ---- Contact card ------------------------------------------------------- */
+
+.imp-contact-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 0;
+  background: var(--p-surface-0);
+  border-radius: 1.25rem;
+  border: 1px solid var(--p-surface-200);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow:
+    0 4px 6px -1px color-mix(in srgb, var(--p-primary-900) 5%, transparent),
+    0 2px 24px color-mix(in srgb, var(--p-primary-900) 5%, transparent);
+}
+
+.imp-contact-card__col {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.imp-contact-card__divider {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+    width: 1px;
+    background: var(--p-surface-200);
+    align-self: stretch;
+    flex-shrink: 0;
+    margin-inline: 1.5rem;
+  }
+}
+
+.imp-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--p-surface-500);
+
+  &--mt {
+    margin-top: 1.1rem;
+  }
+}
+
+.imp-address {
+  font-style: normal;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--p-surface-800);
+}
+
+.imp-value {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--p-surface-800);
+  line-height: 1.5;
+
+  &--mono {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    color: var(--p-primary-700);
+  }
+}
+
+.imp-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .pi {
+    color: var(--p-primary-600);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- Article ------------------------------------------------------------ */
+
+.imp-article {
+  background: var(--p-surface-0);
+  border-radius: 1.25rem;
+  border: 1px solid var(--p-surface-200);
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow:
+    0 4px 6px -1px color-mix(in srgb, var(--p-primary-900) 5%, transparent),
+    0 2px 24px color-mix(in srgb, var(--p-primary-900) 5%, transparent);
+}
+
+.imp-block {
+  padding-bottom: 1.75rem;
+  margin-bottom: 0.25rem;
+
+  & + .imp-block {
+    border-top: 1px solid var(--p-surface-100);
+    padding-top: 1.75rem;
+  }
+}
+
+.imp-h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--p-surface-900);
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--p-primary-400);
+}
+
+.imp-article p {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--p-surface-700);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ---- Links -------------------------------------------------------------- */
+
+.imp-link {
+  color: var(--p-primary-700);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+
+  &:hover {
+    color: var(--p-primary-900);
+  }
+}
+
+/* ---- Footer links ------------------------------------------------------- */
+
+.imp-footer-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--p-surface-100);
+
+  a {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+}

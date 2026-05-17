@@ -1,0 +1,124 @@
+.page-hero {
+  background: var(--gh-hero-wash);
+  color: var(--p-surface-0);
+
+  .gh-kicker {
+    color: var(--gh-on-dark-kicker);
+  }
+
+  h1 {
+    margin: 0.35rem 0 0.75rem;
+  }
+}
+
+.prose-section {
+  background: var(--p-surface-0);
+}
+
+.prose-split {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+.prose-split__figure {
+  margin: 0;
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--p-surface-100);
+  box-shadow:
+    0 20px 44px color-mix(in srgb, var(--p-primary-900) 12%, transparent),
+    0 0 0 1px var(--p-surface-200);
+}
+
+.prose-split__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.55s ease;
+
+  &.gh-photo-fill {
+    transform: scale(var(--gh-photo-fill-zoom));
+  }
+
+  @media (hover: hover) {
+    .prose-split__figure:hover & {
+      transform: scale(1.03);
+    }
+
+    .prose-split__figure:hover &.gh-photo-fill {
+      transform: scale(calc(var(--gh-photo-fill-zoom) * 1.03));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prose-split__img {
+    transition: none;
+
+    &.gh-photo-fill {
+      transform: scale(var(--gh-photo-fill-zoom));
+    }
+  }
+}
+
+.prose-split__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--p-surface-0);
+  background: linear-gradient(to top, color-mix(in srgb, var(--p-primary-950) 70%, transparent), transparent);
+}
+
+.prose {
+  max-width: 40rem;
+
+  h2 {
+    margin: 2rem 0 0.75rem;
+    font-size: 1.35rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin: 0 0 1rem;
+    color: var(--p-surface-600);
+    line-height: 1.65;
+  }
+}
+
+::ng-deep .prose__cta.p-button {
+  margin-top: 0.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  background: var(--p-primary-600);
+  border: none;
+  color: var(--p-surface-0);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}

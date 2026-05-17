@@ -1,0 +1,145 @@
+<p-toast position="top-right" />
+<app-cookie-banner />
+<header class="gh-header" [class.is-scrolled]="scrolled()">
+  <div class="gh-container gh-header__inner">
+    <a routerLink="/" class="gh-logo" (click)="closeMobile()">
+      <img
+        class="gh-logo__img"
+        [src]="brandLogo"
+        width="48"
+        height="48"
+        alt="Glanzhaus Logo"
+        decoding="async"
+      />
+      <span class="gh-logo__text">Glanzhaus</span>
+    </a>
+    <nav class="gh-nav-desktop" aria-label="Hauptnavigation">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          class="gh-nav-link"
+        >
+          {{ item.label }}
+        </a>
+      }
+      <a pButton routerLink="/kontakt" icon="pi pi-send" label="Anfrage" class="gh-cta-header"></a>
+    </nav>
+    <button
+      type="button"
+      class="gh-burger"
+      aria-label="Menü öffnen"
+      (click)="mobileOpen.set(true)"
+    >
+      <i class="pi pi-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
+
+<p-drawer
+  [visible]="mobileOpen()"
+  (visibleChange)="mobileOpen.set($event)"
+  position="right"
+  header="Menü"
+  styleClass="gh-drawer"
+  [modal]="true"
+  [dismissible]="true"
+>
+  <nav class="gh-nav-mobile" aria-label="Mobile Navigation">
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        class="gh-nav-mobile__link"
+        (click)="closeMobile()"
+      >
+        {{ item.label }}
+      </a>
+    }
+    <a
+      pButton
+      routerLink="/kontakt"
+      icon="pi pi-send"
+      label="Kontakt aufnehmen"
+      class="w-full gh-mobile-cta"
+      (click)="closeMobile()"
+    ></a>
+  </nav>
+</p-drawer>
+
+<main class="gh-main">
+  <router-outlet />
+</main>
+
+<footer class="gh-footer">
+  <div class="gh-container gh-footer__grid">
+    <div>
+      <div class="gh-footer__brand-row">
+        <img
+          class="gh-footer__logo"
+          [src]="brandLogo"
+          width="44"
+          height="44"
+          alt="Glanzhaus Logo"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="gh-footer__brand">Glanzhaus</div>
+      </div>
+      <p class="gh-footer__motto">«Wenn das Zuhause glänzt, strahlt auch das Herz.»</p>
+      <p class="gh-footer__tagline">
+        Reinigung, Hauswartung &amp; Gartenpflege im Mittelland — persönlich, fair und zuverlässig.
+      </p>
+      <div class="gh-footer__social" aria-label="Social Media">
+        <span class="gh-footer__social-heading">Social Media</span>
+        <ul class="gh-footer__social-list">
+          @for (s of socialMedia; track s.label) {
+            <li>
+              @if (s.href) {
+                <a
+                  class="gh-footer__social-link"
+                  [href]="s.href!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="s.label"
+                >
+                  <i [class]="s.icon" aria-hidden="true"></i>
+                </a>
+              } @else {
+                <span class="gh-footer__social-slot" role="img" [attr.aria-label]="s.label">
+                  <i [class]="s.icon" aria-hidden="true"></i>
+                </span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="gh-footer__heading">Navigation</div>
+      <ul class="gh-footer__links">
+        <li><a routerLink="/ueber-uns">Über uns</a></li>
+        <li><a routerLink="/referenzen">Referenzen</a></li>
+        <li><a routerLink="/mietgeraete">Mietgeräte</a></li>
+        <li><a routerLink="/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="gh-footer__heading">Rechtliches</div>
+      <ul class="gh-footer__links">
+        <li><a routerLink="/impressum">Impressum</a></li>
+        <li><a routerLink="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="gh-footer__bar">
+    <div class="gh-container gh-footer__bar-inner">
+      <span>© {{ year }} Glanzhaus</span>
+      <a href="https://glanzhaus.ch/" target="_blank" rel="noopener noreferrer" class="gh-footer__legacy"
+        >Vorherige Website</a
+      >
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,46 @@
+<section class="page-hero">
+  <div class="gh-container">
+    <p class="gh-kicker">Über uns</p>
+    <h1 ghInView>Glanzhaus im Mittelland</h1>
+    <p class="page-lead" ghInView [delayMs]="80">
+      Wir verbinden handwerkliche Sorgfalt mit professioneller Reinigungstechnik — für Immobilien, die im Alltag belastet
+      werden, und für Aussenanlagen, die wieder strahlen sollen.
+    </p>
+  </div>
+</section>
+
+<section class="gh-section prose-section">
+  <div class="gh-container prose-split">
+    <figure class="prose-split__figure" ghInView>
+      <img
+        class="prose-split__img gh-photo-fill"
+        [src]="img.aboutAussen"
+        width="560"
+        height="700"
+        alt="Handwerkliche Wartung am Aussenbereich — Werterhalt und Sorgfalt"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption class="prose-split__caption">Werthalt · Sauberkeit · Verlässlichkeit</figcaption>
+    </figure>
+    <div class="prose" ghInView [delayMs]="120">
+      <h2>Unser Anspruch</h2>
+      <p>
+        Ob Wohnung, Einfamilienhaus oder Geschäftslokal: Sauberkeit und Werterhalt entstehen dort, wo Arbeitsschritte
+        geplant werden und Materialien respektiert werden. Genau dort setzen wir an — mit klaren Absprachen, fairer
+        Preisgestaltung und dem Anspruch, Termine einzuhalten.
+      </p>
+      <p>
+        Die Bandbreite reicht von der schonenden Fenster- und Storenreinigung über die gründliche Aussenreinigung von
+        Belägen und Holzflächen bis zur zuverlässigen Hauswartung und der regelmässigen Gartenpflege. Wo es sinnvoll ist,
+        kombinieren wir Leistungen, damit Sie weniger Koordinationsaufwand haben.
+      </p>
+      <h2>Persönliche Zusammenarbeit</h2>
+      <p>
+        Bei Glanzhaus sind Sie direkt mit dem Menschen im Austausch, der die Arbeit plant und ausführt. Kurze Wege,
+        ehrliche Einschätzungen und Lösungen, die zu Ihrem Alltag passen — das ist unser Versprechen.
+      </p>
+      <a pButton routerLink="/kontakt" label="Kontakt aufnehmen" icon="pi pi-send" class="prose__cta"></a>
+    </div>
+  </div>
+</section>

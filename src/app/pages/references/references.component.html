@@ -1,0 +1,94 @@
+<section class="page-hero page-hero--alt">
+  <div class="gh-container">
+    <p class="gh-kicker">Referenzen</p>
+    <h1 ghInView>Vertrauen durch Wiederholung</h1>
+    <p class="page-lead" ghInView [delayMs]="70">
+      Auszüge aus der Arbeit mit Privat- und Geschäftskunden im Mittelland — gerne geben wir auf Anfrage Detailreferenzen
+      bekannt.
+    </p>
+  </div>
+</section>
+
+<div class="ref-showcase" ghInView>
+  <img
+    class="ref-showcase__img gh-photo-fill"
+    [src]="img.bandImmobilie"
+    width="1920"
+    height="640"
+    alt="Wohlgepflegte Immobilie und Aussenbereich"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="ref-showcase__veil" aria-hidden="true"></div>
+  <p class="ref-showcase__tagline">Qualität, die man von aussen sieht — und im Alltag spürt.</p>
+</div>
+
+<section class="gh-section ref-grid-section">
+  <div class="gh-container ref-grid">
+    @for (h of highlights; track h.title; let i = $index) {
+      <p-card styleClass="ref-card" ghInView [delayMs]="i * 70">
+        <h2>{{ h.title }}</h2>
+        <div class="ref-card__tags">
+          @for (t of h.tags; track t) {
+            <p-tag [value]="t" severity="success" styleClass="ref-tag" />
+          }
+        </div>
+        <p>{{ h.text }}</p>
+      </p-card>
+    }
+  </div>
+  <div class="gh-container ref-note" ghInView>
+    <p class="gh-muted">
+      <i class="pi pi-info-circle" aria-hidden="true"></i>
+      Konkrete Projektlisten und Bewilligungen zum Teilen mit Neukunden besprechen wir persönlich — so schützen wir die
+      Privatsphäre bestehender Auftraggeber.
+    </p>
+    <a pButton routerLink="/kontakt" label="Referenzgespräch vereinbaren" icon="pi pi-comments"></a>
+  </div>
+</section>
+
+<section class="gh-section reviews-section">
+  <div class="gh-container">
+    <header class="reviews-head" ghInView>
+      <p class="gh-kicker">Kundenstimmen</p>
+      <h2>Das sagen Kunden</h2>
+      <div class="reviews-head__rating">
+        <span class="reviews-head__stars" aria-label="5 von 5 Sternen">
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+          <i class="pi pi-star-fill" aria-hidden="true"></i>
+        </span>
+        <span class="reviews-head__score">5.0</span>
+        <span class="reviews-head__count gh-muted">· 8 Google-Bewertungen</span>
+      </div>
+    </header>
+
+    <div class="reviews-grid">
+      @for (r of reviews; track r.name; let i = $index) {
+        <article class="review-card" ghInView [delayMs]="i * 55">
+          <header class="review-card__header">
+            <span class="review-card__avatar" aria-hidden="true">{{ r.initials }}</span>
+            <div class="review-card__meta">
+              <span class="review-card__name">{{ r.name }}</span>
+              <span class="review-card__stars" aria-label="5 Sterne">
+                <i class="pi pi-star-fill" aria-hidden="true"></i>
+                <i class="pi pi-star-fill" aria-hidden="true"></i>
+                <i class="pi pi-star-fill" aria-hidden="true"></i>
+                <i class="pi pi-star-fill" aria-hidden="true"></i>
+                <i class="pi pi-star-fill" aria-hidden="true"></i>
+              </span>
+            </div>
+          </header>
+          <p class="review-card__text">{{ r.text }}</p>
+        </article>
+      }
+    </div>
+
+    <p class="reviews-source gh-muted" ghInView>
+      <i class="pi pi-google" aria-hidden="true"></i>
+      Alle Bewertungen stammen von Google und werden ungekürzt wiedergegeben.
+    </p>
+  </div>
+</section>

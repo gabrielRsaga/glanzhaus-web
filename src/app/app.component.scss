@@ -1,0 +1,448 @@
+.gh-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--p-surface-0) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--p-surface-200, #e2e8e4);
+  transition:
+    background-color 0.9s ease,
+    border-color 0.9s ease;
+
+  &.is-scrolled {
+    background: var(--p-primary-950);
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+
+    /* Logo icon */
+    .gh-logo__img {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Logo text */
+    .gh-logo__text {
+      color: var(--p-surface-0);
+    }
+
+    .gh-logo:hover .gh-logo__text {
+      color: var(--gh-on-dark-muted);
+    }
+
+    /* Nav links */
+    .gh-nav-link {
+      color: var(--gh-on-dark-muted);
+
+      &:hover {
+        color: var(--p-surface-0);
+        background: color-mix(in srgb, var(--p-surface-0) 10%, transparent);
+      }
+
+      &:focus-visible {
+        color: var(--p-surface-0);
+        background: color-mix(in srgb, var(--p-surface-0) 14%, transparent);
+        outline-color: var(--gh-on-dark-kicker);
+      }
+
+      &.is-active {
+        color: var(--p-surface-0);
+        background: color-mix(in srgb, var(--p-surface-0) 12%, transparent);
+      }
+    }
+
+    /* Burger button */
+    .gh-burger {
+      background: color-mix(in srgb, var(--p-surface-0) 10%, transparent);
+      color: var(--p-surface-0);
+
+      &:hover {
+        background: color-mix(in srgb, var(--p-surface-0) 18%, transparent);
+        color: var(--p-surface-0);
+      }
+    }
+  }
+}
+
+.gh-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 5rem;
+  padding-block: 0.45rem;
+}
+
+.gh-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--p-surface-900);
+  font-weight: 700;
+  border-radius: 0.45rem;
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+
+  &:hover .gh-logo__text {
+    color: var(--p-primary-800);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-500);
+    outline-offset: 4px;
+  }
+
+  &__img {
+    display: block;
+    height: clamp(2.5rem, 5vw, 3rem);
+    width: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: filter 0.9s ease;
+  }
+
+  &__text {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    transition: color 0.9s ease;
+  }
+}
+
+.gh-nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+}
+
+@media (min-width: 880px) {
+  .gh-nav-desktop {
+    display: flex;
+  }
+}
+
+.gh-nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--p-surface-600);
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.35rem;
+  transition:
+    color 0.9s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    color: var(--p-primary-700);
+    background: var(--p-primary-50);
+  }
+
+  &:focus-visible {
+    color: var(--p-primary-800);
+    background: var(--p-primary-100);
+    outline: 2px solid var(--p-primary-400);
+    outline-offset: 2px;
+  }
+
+  &.is-active {
+    color: var(--p-primary-800);
+    font-weight: 600;
+    background: var(--p-primary-50);
+  }
+}
+
+::ng-deep .gh-cta-header.p-button {
+  border-radius: 2rem;
+  padding-inline: 1.25rem;
+  font-weight: 600;
+  background: var(--p-primary-600);
+  border: none;
+  color: var(--p-surface-0);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
+
+.gh-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--p-surface-100);
+  color: var(--gh-blue-deep);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: var(--p-primary-100);
+    color: var(--p-primary-800);
+  }
+
+  &:focus-visible {
+    background: var(--p-primary-100);
+    color: var(--p-primary-900);
+    outline: 2px solid var(--p-primary-500);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background: var(--p-primary-200);
+  }
+
+  @media (min-width: 880px) {
+    display: none;
+  }
+}
+
+.gh-main {
+  min-height: 50vh;
+}
+
+.gh-footer {
+  margin-top: 4rem;
+  background: var(--p-primary-950);
+  color: var(--p-surface-0);
+}
+
+.gh-footer__grid {
+  display: grid;
+  gap: 2rem;
+  padding-block: 3rem;
+
+  @media (min-width: 720px) {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.gh-footer__brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gh-footer__logo {
+  display: block;
+  height: clamp(2.4rem, 4.5vw, 2.85rem);
+  width: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.gh-footer__brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.gh-footer__motto {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--p-surface-0);
+  line-height: 1.4;
+  opacity: 0.92;
+}
+
+.gh-footer__tagline {
+  margin: 0;
+  color: var(--gh-on-dark-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.gh-footer__social {
+  margin-top: 1.4rem;
+}
+
+.gh-footer__social-heading {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gh-on-dark-kicker);
+  margin-bottom: 0.65rem;
+}
+
+.gh-footer__social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.gh-footer__social-link,
+.gh-footer__social-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--p-surface-0) 14%, transparent);
+  color: var(--p-surface-0);
+  font-size: 1.1rem;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.gh-footer__social-link {
+  text-decoration: none;
+
+  &:hover {
+    background: color-mix(in srgb, var(--p-surface-0) 26%, transparent);
+    color: var(--p-surface-0);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gh-on-dark-kicker);
+    outline-offset: 2px;
+  }
+}
+
+.gh-footer__social-slot {
+  cursor: default;
+  opacity: 0.92;
+}
+
+.gh-footer__heading {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.gh-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  a {
+    color: var(--gh-on-dark-kicker);
+    text-decoration: none;
+    font-size: 0.95rem;
+
+    &:hover {
+      color: var(--p-surface-0);
+    }
+  }
+}
+
+.gh-footer__bar {
+  border-top: 1px solid color-mix(in srgb, var(--p-surface-0) 18%, transparent);
+}
+
+.gh-footer__bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  font-size: 0.85rem;
+  color: var(--gh-on-dark-muted);
+}
+
+.gh-footer__legacy {
+  color: var(--gh-on-dark-kicker);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--p-surface-0);
+  }
+}
+
+::ng-deep .gh-drawer .p-drawer-header {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+::ng-deep .gh-drawer .p-drawer-close-button {
+  color: var(--p-surface-600);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: var(--p-primary-50);
+    color: var(--p-primary-800);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--p-primary-400);
+    outline-offset: 2px;
+  }
+}
+
+.gh-nav-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.gh-nav-mobile__link {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.65rem 0.5rem;
+  margin-inline: -0.5rem;
+  border-bottom: 1px solid var(--p-surface-200);
+  color: var(--p-surface-800);
+  border-radius: 0.35rem;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    color: var(--p-primary-800);
+    background: var(--p-primary-50);
+    border-bottom-color: transparent;
+  }
+
+  &:focus-visible {
+    color: var(--p-primary-900);
+    background: var(--p-primary-100);
+    outline: 2px solid var(--p-primary-400);
+    outline-offset: 0;
+    border-bottom-color: transparent;
+  }
+
+  &.is-active {
+    color: var(--p-primary-800);
+    background: var(--p-primary-50);
+  }
+}
+
+::ng-deep .gh-mobile-cta.p-button {
+  margin-top: 0.5rem;
+  justify-content: center;
+
+  .p-button-label,
+  .p-button-icon {
+    color: inherit;
+  }
+}
