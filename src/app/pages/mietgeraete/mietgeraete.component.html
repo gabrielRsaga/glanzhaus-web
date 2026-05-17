@@ -178,7 +178,7 @@
               <p class="miet-group__heading">
                 <i class="pi pi-user" aria-hidden="true"></i>Ihre Kontaktdaten
               </p>
-              <div class="miet-grid">
+              <div class="miet-form-grid">
                 <div class="miet-field">
                   <p-floatlabel variant="on">
                     <input pInputText id="miet-vorname" formControlName="vorname" class="w-full" autocomplete="given-name" />
@@ -197,7 +197,7 @@
                     <span class="miet-field__error">Pflichtfeld (min. 2 Zeichen).</span>
                   }
                 </div>
-                <div class="miet-field">
+                <div class="miet-field miet-field--full">
                   <p-floatlabel variant="on">
                     <input pInputText id="miet-email" type="email" formControlName="email" class="w-full" autocomplete="email" />
                     <label for="miet-email">E-Mail *</label>
@@ -206,7 +206,7 @@
                     <span class="miet-field__error">Gültige E-Mail-Adresse eingeben.</span>
                   }
                 </div>
-                <div class="miet-field">
+                <div class="miet-field miet-field--full">
                   <p-floatlabel variant="on">
                     <input pInputText id="miet-phone" type="tel" formControlName="phone" class="w-full" autocomplete="tel" />
                     <label for="miet-phone">Telefon (optional)</label>
