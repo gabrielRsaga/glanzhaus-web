@@ -1,0 +1,17 @@
+Bilder (src/assets/images/)
+==========================
+
+Dateinamen (passend zu site-image-files.ts):
+
+  logo_transparent.png            Logo — Header, Footer, Kontakt (site-image-files: brandLogo)
+  logo_main.png                   Alternative
+  logo_transparent.ico            Tab-Icon (index.html)
+
+  glass.png                       Hero (Willkommen)
+  fenster-storenreinigung.png     Dienst «Fenster- und Storenreinigung»
+  team-manuel-mikes.png           Home «Team»
+  aussenreinigung-terrasse.png    Referenzen-Band + Dienst «Aussenreinigung»
+  hauswartung-handwerk.png        Über uns + Dienst «Hauswartung | Handwerk»
+  gartenpflege.png                Kontakt + Dienst «Gartenpflege»
+
+Konfiguration:  src/app/site-image-files.ts
